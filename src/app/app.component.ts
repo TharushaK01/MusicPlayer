@@ -40,18 +40,23 @@ export class AppComponent {
     url:""
   }
 
-  play(): void{
-    if (this.audio.paused) {
-     if (this.audio.readyState === 0) {
-      this.trackPointer = 0;
-      this.currentMusic = this.musicList[0];
-      this.audio.src = this.currentMusic.url;
-     }
-     this.audio.play();
-    }else {
+  play(index?: number): void{
+    if (index === undefined){
+     if (this.audio.paused) {
+      if (this.audio.readyState === 0) {
+       this.trackPointer = 0;
+       this.currentMusic = this.musicList[0];
+       this.audio.src = this.currentMusic.url;
+      }
+      this.audio.play();
+    } else {
       this.audio.pause();
     }
+  } else {
+    this.trackPointer = index;
+    this.currentMusic = this.musicList[index];
+    this.audio.src = this.currentMusic.url;
+    this.audio.play();
   }
-  
-
+ }
 }
