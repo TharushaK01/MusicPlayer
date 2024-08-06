@@ -10,7 +10,7 @@ import { Music } from './music';
 })
 export class AppComponent {
   title = 'MusicPlayer';
-  audio = new Audio();
+  audio = new Audio ();
 
   musicList: Music[] = [
     {
